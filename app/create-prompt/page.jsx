@@ -19,7 +19,7 @@ export default function CreatePrompt() {
             const res = await axios.post('/api/prompt/new', {
                 prompt: post.prompt,
                 userId: session?.user.id,
-                tag: post.tag
+                tag: post.tag.replace('#', '')
             });
             if (res.status === 201)
                 router.push('/')

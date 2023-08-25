@@ -1,5 +1,6 @@
 import PromptCardList from "./PromptCardList"
-
+import PromptSkeletonList from "./PromptSkeletonList"
+import ProfileCard from "./ProfileCard"
 const Profile = ({
   name,
   desc,
@@ -9,18 +10,26 @@ const Profile = ({
 
 }) => {
   return (
-    <section className="w-full">
+    <section className="w-full ">
       <h1 className="head_text text-left">
           <span className="blue_gradient">{name} Profile</span>
       </h1>
       <p className="desc text-left">
         {desc}
       </p>
-      <PromptCardList 
+      <ProfileCard 
+        userData={data && data[0]?.creator}
+        totalPrompts = {data && data.length}
+      />
+      {
+        !data?<PromptSkeletonList/>:
+        <PromptCardList 
         data={data}
         handleEdit={handleEdit}
         handleDelete = {handleDelete}
       />
+      }
+     
     </section>
   )
 }

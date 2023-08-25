@@ -22,7 +22,6 @@ const ProfilePage = ({params}) => {
     return (
         <Profile
             name={userName}
-            desc="Welcome to your presonalized profile page"
             data={posts}
         />
     )

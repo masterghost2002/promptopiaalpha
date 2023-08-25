@@ -20,7 +20,7 @@ const PromptCard = ({
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <Link href={`/profile/${post.creator._id}`}>
+        <Link href={session.user.id === post.creator._id ? '/profile': `/profile/${post.creator._id}`}>
           <div className='flex-1 flex justify-start items-center gap-3 cursor-pointer'>
             <Image
               src={post.creator.image}
@@ -58,7 +58,7 @@ const PromptCard = ({
         className='font-inter text-sm blue_gradient cursor-pointer'
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
-        {post.tag}
+        #{post.tag}
       </p>
       {session?.user.id === post.creator._id && pathname === '/profile' &&
         (
